@@ -8,23 +8,23 @@ self.__precacheManifest = [
     "url": "/qr-scanner/static/js/runtime~main.701dd187.js"
   },
   {
-    "revision": "3c1feb007354044ad0d7",
-    "url": "/qr-scanner/static/js/main.c3552df7.chunk.js"
+    "revision": "dbeb664ec1010f6a8b67",
+    "url": "/qr-scanner/static/js/main.c032ef00.chunk.js"
   },
   {
-    "revision": "f0059003039bfc9fba00",
-    "url": "/qr-scanner/static/js/2.b27f1798.chunk.js"
+    "revision": "67834383af3cc0b7501f",
+    "url": "/qr-scanner/static/js/2.7f73552b.chunk.js"
   },
   {
-    "revision": "3c1feb007354044ad0d7",
+    "revision": "dbeb664ec1010f6a8b67",
     "url": "/qr-scanner/static/css/main.18b11911.chunk.css"
   },
   {
-    "revision": "f0059003039bfc9fba00",
+    "revision": "67834383af3cc0b7501f",
     "url": "/qr-scanner/static/css/2.55861fc6.chunk.css"
   },
   {
-    "revision": "f901d1a7b7384285b9b499615e25dacd",
+    "revision": "c11b7de834ebb645f724bc11026fdc39",
     "url": "/qr-scanner/index.html"
   }
 ];
