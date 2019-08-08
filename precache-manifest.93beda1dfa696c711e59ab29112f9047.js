@@ -4,8 +4,8 @@ self.__precacheManifest = [
     "url": "/qr-scanner/static/js/runtime~main.701dd187.js"
   },
   {
-    "revision": "f8c9a8e23af0c6d77837",
-    "url": "/qr-scanner/static/js/main.d1b917b4.chunk.js"
+    "revision": "845f1e886608a8c7971d",
+    "url": "/qr-scanner/static/js/main.b93a7de7.chunk.js"
   },
   {
     "revision": "e82a72899af797022350",
@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/qr-scanner/static/css/2.55861fc6.chunk.css"
   },
   {
-    "revision": "a160ece523df22bdde7d0257dcc0c161",
+    "revision": "ed92eafe0270b11fa9d250d7c8e3bead",
     "url": "/qr-scanner/index.html"
   }
 ];
