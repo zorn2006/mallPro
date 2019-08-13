@@ -22,11 +22,7 @@ const Home = ({id, go, fetchedUser, activeModal, onCloseModal, onJoinToGroup}) =
                 </Button>
             </Div>
         </Group>
-        <Modal
-            activeModal={activeModal}
-            onCloseModal={onCloseModal}
-            onJoinToGroup={onJoinToGroup}
-        />
+
     </Panel>
 );
 

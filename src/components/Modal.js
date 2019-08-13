@@ -2,17 +2,17 @@ import React from 'react';
 
 import {ModalRoot, ModalCard} from '@vkontakte/vkui';
 
-const Modal = ({activeModal, onCloseModal, onJoinToGroup}) => (
+const Modal = ({activeModal, currentTitle, currentCaption, actionFlag, onCloseModal, onAction, currentButtonText}) => (
     <ModalRoot activeModal={activeModal}>
         <ModalCard
-            id={'USER_SUBSCRIBE_MODAL'}
+            id={'MY_MODAL'}
             onClose={() => onCloseModal()}
-            title="Вы не вступили группу"
-            caption="Для использования функционала нажмите вступить."
+            title={currentTitle}
+            caption={currentCaption}
             actions={[{
-                title: 'Всутпить',
+                title: currentButtonText,
                 type: 'primary',
-                action: () => onJoinToGroup()
+                action: () => onAction(actionFlag)
             }]}
         >
         </ModalCard>
