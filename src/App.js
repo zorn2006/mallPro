@@ -18,6 +18,7 @@ class App extends React.Component {
 
         this.state = {
             activePanel: 'home',
+            isMember: false,
             fetchedUser: null,
             activeModal: null,
             QRResult: null,
@@ -34,17 +35,22 @@ class App extends React.Component {
     }
 
     handleQRResult = (QRResult = '1111111') => {
-        connect.send('VKWebAppCallAPIMethod', {
-            method: "groups.isMember",
-            request_id: "groups.isMember",
-            params: {
-                'user_id': this.state.fetchedUser.id,
-                ...GROUP_ID,
-                ...APP_ACCESS_TOKEN,
-                ...VERSION
-            }
-        });
         this.setState({QRResult})
+
+        if (this.state.isMember) {
+            this.sendQRResult(this.state.QRResult)
+        } else {
+            connect.send('VKWebAppCallAPIMethod', {
+                method: "groups.isMember",
+                request_id: "groups.isMember",
+                params: {
+                    'user_id': this.state.fetchedUser.id,
+                    ...GROUP_ID,
+                    ...APP_ACCESS_TOKEN,
+                    ...VERSION
+                }
+            });
+        }
     }
 
     sendQRResult = async () => {
@@ -64,9 +70,8 @@ class App extends React.Component {
                     ...GROUP_ID
                 }
             });
-            this.setAreaVal('passed data posting')
         } catch (e) {
-            this.setAreaVal(e)
+            console.log(e);
         }
 
     }
@@ -107,7 +112,7 @@ class App extends React.Component {
     activateJoinGroupModal = () => {
         this.setState({
             currentTitle: 'Вступление в группу',
-            currentCaption: 'Для получения баллов и рассылки необходимо быть членом группы',
+            currentCaption: 'Для начисления балов подпишитесь на группу и рассылку',
             currentButtonText: 'Вступить',
             actionFlag: 'joinGroup'
         })
@@ -152,7 +157,8 @@ class App extends React.Component {
                         this.activateJoinGroupModal()
                     }
                     if (detail.data.request_id === 'groups.isMember' && detail.data.response === 1) {
-                       this.sendQRResult()
+                        this.setState({isMember: true})
+                        this.sendQRResult()
                     }
 
                     if (detail.data.request_id === 'messages.isMessagesFromGroupAllowed' && detail.data.response.is_allowed === 1) {
