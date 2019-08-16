@@ -19,6 +19,7 @@ class App extends React.Component {
         this.state = {
             activePanel: 'home',
             isMember: false,
+            isMessagesAllowed: false,
             fetchedUser: null,
             activeModal: null,
             QRResult: null,
@@ -59,17 +60,21 @@ class App extends React.Component {
                 qr: this.state.QRResult,
                 user: this.state.fetchedUser
             })
-            connect.send('VKWebAppCallAPIMethod', {
-                method: "messages.isMessagesFromGroupAllowed",
-                request_id: "messages.isMessagesFromGroupAllowed",
-                params: {
+            if(this.state.isMessagesAllowed){
+                this.QRSuccessModal()
+            }else{
+                connect.send('VKWebAppCallAPIMethod', {
+                    method: "messages.isMessagesFromGroupAllowed",
                     request_id: "messages.isMessagesFromGroupAllowed",
-                    user_id: this.state.fetchedUser.id,
-                    ...COMMUNITY_ACCESS_TOKEN,
-                    ...VERSION,
-                    ...GROUP_ID
-                }
-            });
+                    params: {
+                        request_id: "messages.isMessagesFromGroupAllowed",
+                        user_id: this.state.fetchedUser.id,
+                        ...COMMUNITY_ACCESS_TOKEN,
+                        ...VERSION,
+                        ...GROUP_ID
+                    }
+                });
+            }
         } catch (e) {
             console.log(e);
         }
@@ -138,6 +143,7 @@ class App extends React.Component {
                     break;
                 case 'VKWebAppAllowMessagesFromGroupResult':
                     if (detail.data.request_id === 'messages.isMessagesFromGroupAllowed' && detail.data.result) {
+                        this.setState({isMessagesAllowed: true})
                         this.QRSuccessModal()
                     }
                     break;
@@ -162,6 +168,7 @@ class App extends React.Component {
                     }
 
                     if (detail.data.request_id === 'messages.isMessagesFromGroupAllowed' && detail.data.response.is_allowed === 1) {
+                        this.setState({isMessagesAllowed: true})
                         this.QRSuccessModal()
                     }
                     if (detail.data.request_id === 'messages.isMessagesFromGroupAllowed' && detail.data.response.is_allowed === 0) {
