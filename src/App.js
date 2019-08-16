@@ -81,11 +81,6 @@ class App extends React.Component {
 
     }
 
-    setAreaVal = (data) => {
-        this.setState({areaVal: this.state.areaVal + ' ' + JSON.stringify(data)});
-    };
-
-
     activateModal = () => {
         this.setState({activeModal: 'MY_MODAL'});
     };
@@ -136,7 +131,6 @@ class App extends React.Component {
 
     componentDidMount() {
         connect.subscribe(({detail}) => {
-            this.setAreaVal(detail)
             switch (detail.type) {
                 case 'VKWebAppGetUserInfoResult':
                     this.setState({fetchedUser: detail.data});
@@ -149,7 +143,6 @@ class App extends React.Component {
                     break;
                 case 'VKWebAppJoinGroupResult':
                     if (detail.data.result) {
-                        console.log('VKWebAppJoinGroupResult')
                         this.sendQRResult()
                     }
                     break;
