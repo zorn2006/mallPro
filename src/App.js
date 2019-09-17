@@ -1,7 +1,6 @@
 import React from "react";
 import connect from "@vkontakte/vkui-connect";
 import {
-  Button,
   Avatar,
   Group,
   ListItem,
@@ -142,12 +141,12 @@ class App extends React.Component {
 
   componentDidMount() {
     this.startScanFlow();
-    this.memberCheck();
-    this.messagesAllowedCheck();
     connect.subscribe(({ detail }) => {
       switch (detail.type) {
         case "VKWebAppGetUserInfoResult":
           this.setState({ fetchedUser: detail.data });
+          this.memberCheck();
+          this.messagesAllowedCheck();
           break;
         case "VKWebAppAllowMessagesFromGroupResult":
           if (
@@ -164,7 +163,13 @@ class App extends React.Component {
           }
           break;
         case "VKWebAppOpenQRResult":
-          this.handleQRResult(detail.data.qr_reult);
+          if (!detail.data.qr_data) {
+            this.startScanFlow();
+          }
+          this.handleQRResult(detail.data.qr_data);
+          break;
+        case "VKWebAppOpenQRFailed":
+          this.startScanFlow();
           break;
 
         // METHODS
