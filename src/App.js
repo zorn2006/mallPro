@@ -184,7 +184,7 @@ class App extends React.Component {
                     <PanelHeader>Scanner</PanelHeader>
 
                     {this.state.fetchedUser &&
-                    <Group title="Welcome">
+                    <Group title="Выполняй задания и участвуй в розыгрышах">
                         <ListItem
                             before={
                                 this.state.fetchedUser.photo_200
