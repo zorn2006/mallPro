@@ -181,7 +181,7 @@ class App extends React.Component {
         return (
             <View activePanel={this.state.activePanel}>
                 <Panel id={'home'}>
-                    <PanelHeader>Scanner</PanelHeader>
+                    <PanelHeader>ТРК Московский</PanelHeader>
 
                     {this.state.fetchedUser &&
                     <Group title="Выполняй задания и участвуй в розыгрышах">
