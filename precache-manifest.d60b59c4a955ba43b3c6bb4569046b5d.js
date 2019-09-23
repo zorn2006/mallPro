@@ -4,8 +4,8 @@ self.__precacheManifest = [
     "url": "/mallPro/static/js/runtime~main.0ab96835.js"
   },
   {
-    "revision": "01439e15ee9b519109ed",
-    "url": "/mallPro/static/js/main.f97cb9b5.chunk.js"
+    "revision": "818d7b5fd81c1b13a897",
+    "url": "/mallPro/static/js/main.d9a77970.chunk.js"
   },
   {
     "revision": "6605444619fc143c6417",
@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/mallPro/static/css/2.5c705f3c.chunk.css"
   },
   {
-    "revision": "0d0f651c7e5a4975044e5b0996ba24b2",
+    "revision": "e3820dc2b7a1c3e4daae8e1691f51923",
     "url": "/mallPro/index.html"
   }
 ];
