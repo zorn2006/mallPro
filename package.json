@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "homepage": "https://hoqua.github.io/qr-scanner/",
+  "homepage": "https://zorn2006.github.io/mallPro/",
   "scripts": {
     "start": "cross-env PORT=8080 HTTPS=true react-scripts start",
     "build": "react-scripts build",
