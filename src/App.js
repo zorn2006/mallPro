@@ -6,9 +6,9 @@ import axios from 'axios'
 
 import Modal from "./components/Modal";
 
-const GROUP_ID = {group_id: 185199781}
-const COMMUNITY_ACCESS_TOKEN = {access_token: '9b1957fb4a56d227f2d894046db9b8aa12b7dafbbf6f606c0f7af580dcc06cf12862881c158bc4cf82e09'}
-const APP_ACCESS_TOKEN = {access_token: '59f1b2e059f1b2e059f1b2e0c5599da582559f159f1b2e004b9e79590e7db44bab8b30c'}
+const GROUP_ID = { group_id: 71638966}
+const COMMUNITY_ACCESS_TOKEN = { access_token: '34815d25f1f4e6454b4aaf064994f3afc5a2e6159f019dbd3000d7b590889b7e8abc057e772843630a997'}
+const APP_ACCESS_TOKEN = { access_token: '9d0508949d0508949d050894679d680f4099d059d050894c08dd272bb177ca900380deb'}
 const VERSION = {"v": "5.101"}
 
 
