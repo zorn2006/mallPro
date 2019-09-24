@@ -5,6 +5,22 @@ import '@vkontakte/vkui/dist/vkui.css';
 import axios from 'axios'
 
 import Modal from "./components/Modal";
+import SlotsComponent from 'react-slots-component';
+
+
+import * as Apple from '../img/apple.png';
+import * as Aubergine from '../img/aubergine.png';
+import * as Carrot from '../img/carrot.png';
+import * as Cheese from '../img/cheese.png';
+import * as Fries from '../img/fries.png';
+import * as Grapes from '../img/grapes.png';
+import * as Groceries from '../img/groceries.png';
+import * as Lemon from '../img/lemon.png';
+import * as Orange from '../img/orange.png';
+import * as Pineapple from '../img/pineapple.png';
+import * as Salad from '../img/salad.png';
+import * as Sandwich from '../img/sandwich.png';
+import * as Start from '../img/start.png';
 
 const GROUP_ID = { group_id: 71638966}
 const COMMUNITY_ACCESS_TOKEN = { access_token: '34815d25f1f4e6454b4aaf064994f3afc5a2e6159f019dbd3000d7b590889b7e8abc057e772843630a997'}
@@ -175,13 +191,63 @@ class App extends React.Component {
             }
         });
         connect.send('VKWebAppGetUserInfo', {});
+        
     }
 
     render() {
+        const elementStyle = {
+            width: '50px',
+            height: '50px',
+            margin: '4px',
+            border: '2px solid orange',
+        };
+        const items = [
+            <img key='apple' src={Apple} style={elementStyle} alt='' />,
+            <img key='aubergine' src={Aubergine} style={elementStyle} alt='' />,
+            <img key='carrot' src={Carrot} style={elementStyle} alt='' />,
+            <img key='cheese' src={Cheese} style={elementStyle} alt='' />,
+            <img key='fries' src={Fries} style={elementStyle} alt='' />,
+            <img key='grapes' src={Grapes} style={elementStyle} alt='' />,
+            <img key='groceries' src={Groceries} style={elementStyle} alt='' />,
+            <img key='lemon' src={Lemon} style={elementStyle} alt='' />,
+            <img key='orange' src={Orange} style={elementStyle} alt='' />,
+            <img key='pineapple' src={Pineapple} style={elementStyle} alt='' />,
+            <img key='salad' src={Salad} style={elementStyle} alt='' />,
+            <img key='sandwich' src={Sandwich} style={elementStyle} alt='' />,
+        ];
+        const buttonStyle: React.CSSProperties = {
+            position: 'absolute',
+            top: '68px',
+            left: '68px',
+            width: '120px',
+            height: '120px',
+        };
+        const button = <img src={Start} style={buttonStyle} alt='' />;
+        const activeStyle = {
+            background: 'orange',
+        };
+        const callback = ({ type, finalIndex }: any) => {
+            console.log(type, finalIndex);
+        };
+        const setAsyncFinalIndex = (): number | Promise<number> => {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve(10);
+                }, 2000);
+            });
+        };
         return (
             <View activePanel={this.state.activePanel}>
                 <Panel id={'home'}>
                     <PanelHeader>ТРК Московский</PanelHeader>
+                    <SlotsComponent
+                        setAsyncFinalIndex={setAsyncFinalIndex}
+                        items={items}
+                        elementStyle={elementStyle}
+                        activeStyle={activeStyle}
+                        button={button}
+                        callback={callback}
+                    />
 
                     {this.state.fetchedUser &&
                     <Group title="Выполняй задания и участвуй в розыгрышах">
